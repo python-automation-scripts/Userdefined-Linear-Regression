@@ -23,9 +23,9 @@ class LinearRegression():
 
 		self.coef_ = (np.linalg.inv(X_transpose.dot(self.data_train))).dot(X_transpose.dot(self.data_test))
 		self.intercept_ = self.coef_[0]		
-		ypred = 0;
+		ypred = [];
 		for i in range(len(TestData)):			
-			ypred += self.coef_.dot(TestData[i]) # y = c + (m1*x1) + (m2*x2) + (mn*xn)
+			ypred.append(self.coef_.dot(TestData[i])) # y = c + (m1*x1) + (m2*x2) + (mn*xn)
 
 		return ypred
 
@@ -40,9 +40,9 @@ def main():
 
 	reg = LinearRegression()
 	reg.fit(X,Y)
-	ypred = reg.predict([[214.7,24,4]])
+	y_pred = reg.predict([[214.7,24,4],[8.6,2.1,1]])
 
-	print("Prediction = ",ypred)
+	print("Prediction = ",y_pred)
 	print("Coefficient =",reg.coef_)
 	print("Intercept = ",reg.intercept_)
 
